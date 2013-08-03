@@ -1,0 +1,47 @@
+<project name="testCase" default="run" basedir=".">
+	<property name="lib" value="${basedir}/lib/"/>
+	<echo message="dir=${basedir}/lib/"></echo>
+	<property name="jfreechart" value="${basedir}/lib/jfreechart-1.0.14.jar"/>
+	<property name="jcommon" value="${basedir}/lib/jcommon-1.0.17.jar"></property>
+	<!-- import third-Part lib -->
+	<path id="Third-PartLib">  
+		<pathelement path="${basedir}/build/classes" />
+		<fileset dir="${lib}">  
+            <include name="**/*.jar" />  
+        </fileset> 
+	</path> 
+	<!-- clean previous data -->
+	<target name="clean">
+        <delete dir="${basedir}/build"/>
+		<echo message="clean the previous data"></echo>
+    </target>
+	<!-- compile -->
+    <target name="compile" depends = "clean">
+        <mkdir dir="${basedir}/build/classes"/>
+    	<!-- 关联第三方jar	包 -->
+        <javac srcdir = "${basedir}/src" destdir = "${basedir}/build/classes" deprecation="true" failonerror="true" debug="true" encoding="utf-8">
+        	<classpath refid="Third-PartLib"></classpath> 
+        </javac>
+    	<echo message="Compiling the source code success" ></echo>
+    </target>
+	<!-- run -->
+    <target name="run" depends = "jar">
+        <java classname = "com.ringcentral.RunApp" fork="true" > 
+        	<classpath refid="Third-PartLib" ></classpath> 
+            <classpath>
+                <pathelement path="${basedir}/build/classes"/>
+            </classpath>
+        </java>
+    	<echo message="run success" ></echo>
+    </target>
+	<!--打包成jar-->
+    <target name="jar" depends="compile">
+        <jar destfile="ReportToolset.jar" basedir="${basedir}/build/classes">
+        	<zipgroupfileset dir="${lib}" includes="**/*.jar" />
+            <manifest>
+                <attribute name="Main-class" value="RunApp" />
+            </manifest>
+        </jar>
+    	<echo message="jar is ok"></echo>
+    </target>
+</project>
