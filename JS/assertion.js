@@ -4,10 +4,10 @@ assertTrue=function(expression, message) {
 		message="";
 	}
 	if (!expression) {
-		logError(message + "校验失败");
+		logError(message + "assert fail");
 		return 0;
 	} else {
-		UIALogger.logMessage(message + "校验成功");
+		UIALogger.logMessage(message + "assert success");
 		return 1;
 	}
 }
@@ -17,25 +17,25 @@ function assertFalse(expression, message) {
 }
 
 function assertNull(actual, message) {
-  var defMessage = "期盼值 == null , 但是实际值 <" + actual + ">"; 
+  var defMessage = "expected == null , actual <" + actual + ">"; 
   // TODO: string-matching on UIAElementNil makes my tummy feel bad. Fix it.
   return assertTrue(actual === null || actual.toString() == "[object UIAElementNil]",
              message ? message + ": " + defMessage : defMessage);
 }
 
 function assertNotNull(actual, message) {
-  var defMessage = "期盼值 != null";
+  var defMessage = "expected != null";
   return assertTrue(actual !== null && actual.toString() != "[object UIAElementNil]", 
              message ? message + ": " + defMessage : defMessage);
 }
 
 function assertEquals(actual, expect, message) {
-	var msg = "实际值 # " + actual + " # 与期盼值 # " + expect + " # ";
+	var msg = "actual # " + actual + " # expected # " + expect + " # ";
   	return assertTrue(expect == actual, message ? message + ": " + msg : msg);
 }
 
 function assertNotEquals(actual, expect, message) {
-	var msg = "实际值 # " + actual + " # 与期盼值 # " + expect + " # ";
+	var msg = "actual # " + actual + " # expected # " + expect + " # ";
   	return assertTrue(expect != actual, message ? message + ": " + msg : msg);
 }
 
@@ -48,11 +48,11 @@ function assertNotEquals(actual, expect, message) {
 function assertRegExptest(regExp, expression, message) {
 
 	if(regExp.test(expression)) {
-		var passMsg = expression + " 正则表达式:"+ regExp  +"匹配,验证通过. @" + (!message ? "" : message);
+		var passMsg = expression + " regExp:"+ regExp  +" success. @" + (!message ? "" : message);
 		UIALogger.logMessage(passMsg);
 		return 1;
 	} else {
-		var errorMsg = expression + " 正则表达式:"+ regExp+"不匹配,验证失败.";
+		var errorMsg = expression + " regExp:"+ regExp+" failure.";
 		//throw (new Error("Fail", errorMsg));
 		logError(errorMsg);	
 		return 0;
@@ -69,11 +69,11 @@ function assertRegExptest(regExp, expression, message) {
 function assertRegExpMatch(regExp, expression, message) {
 
 	if(expression.match(regExp) != null) {
-		var passMsg = expression + " 满足表达式:"+ regExp +"匹配,验证通过. @" + (!message ? "" : message);
+		var passMsg = expression + " regExp: "+ regExp +"success. @" + (!message ? "" : message);
 		UIALogger.logMessage(passMsg);
 		return 1;
 	} else {
-		var errorMsg = expression + " 不满足表达式"+ regExp +"匹配,验证失败.";
+		var errorMsg = expression + " regExp: "+ regExp +"failure.";
 		//throw (new Error("Fail", errorMsg));
 		logError(errorMsg);
 		return 0;
@@ -97,12 +97,12 @@ function assertContainText(obj, expectContain, message) {
 	var isTrue2 = labelText==null? false:(labelText.search(expectContain) != -1 ? true : false);
 	var isTrue3 = value ==null? false:(value.search(expectContain) != -1 ? true : false);
 	if(isTrue1 || isTrue2 || isTrue3) {
-		var msg = "对象的name｜label｜value值中包含期盼值的字符 # " + expectContain + " #. @";
+		var msg = "对象的name｜label｜value值中包含expected的字符 # " + expectContain + " #. @";
 		msg += (!message ? "" : message);
 		UIALogger.logMessage(msg);
 		return 1;
 	} else {
-		var errorMsg = "对象的name|label|value值#"+name+"#中不包含期盼值的字符 # " + expectContain + " #.@";
+		var errorMsg = "对象的name|label|value值#"+name+"#中不包含expected的字符 # " + expectContain + " #.@";
 		errorMsg += (!message ? "" : message);
 		logError(errorMsg);
 		//throw (new Error("Fail", "包含校验失败!"));
@@ -124,13 +124,13 @@ function assertNotContainText(obj, expectContain, message) {
 	var isTrue2 = labelText==null? false:(labelText.search(expectContain) != -1 ? true : false);
 	var isTrue3 = value ==null? false:(value.search(expectContain) != -1 ? true : false);
 	if(!isTrue1 && !isTrue2 && !isTrue3) {
-		var msg = "对象的name|label|value值#"+name+"#中不包含期盼值的字符 # " + expectContain + " #.@";
+		var msg = "对象的name|label|value值#"+name+"#中不包含expected的字符 # " + expectContain + " #.@";
 
 		msg += (!message ? "" : message);
 		UIALogger.logMessage(msg);
 		return 1;
 	} else {
-		var errorMsg = "对象的name｜label｜value值中包含期盼值的字符 # " + expectContain + " #. @";
+		var errorMsg = "对象的name｜label｜value值中包含expected的字符 # " + expectContain + " #. @";
 		errorMsg += (!message ? "" : message);
 		logError(errorMsg);
 		//throw (new Error("Fail", "包含校验失败!"));

@@ -97,7 +97,7 @@ function getDateDisplayString(dateTimeStr) {
 pullDownToFresh = function pullDownToFresh(object,attr) {
 
     print("pull down to fresh");
-    var source = object.abbr;  // rc_get 应该 也可以扩展
+    var source = object.abbr;  
     source.waitForValid(10);
     source.dragInsideWithOptions({
         startOffset : {

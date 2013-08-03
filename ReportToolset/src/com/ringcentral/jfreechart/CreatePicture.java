@@ -23,6 +23,7 @@ import org.jfree.chart.plot.*;
 
 /**
  * 该类用于演示最简单的柱状图生成
+ * generate picture tool
  */
 public class CreatePicture {
 	private static String pathPicture = null;

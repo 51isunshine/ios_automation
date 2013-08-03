@@ -7,7 +7,7 @@ function Error(errorType, message) {
 
 Error.prototype.log = function() {
 
-	//这里只处理错误的日志，出错时根据错误类型和想要写入的日志信息实例化一个Error对象然后抛出
+	
 	if(this.type == "Warning") {
 
 		UIALogger.logWarning(this.message);

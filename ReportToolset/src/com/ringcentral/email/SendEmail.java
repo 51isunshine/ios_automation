@@ -21,7 +21,7 @@ import com.ringcentral.xml.CreateXML;
 
 /**
  * @author dylan
- * @email dylan.zhang@ringcentral.com
+ * 
  * @date 2012-7-2
  */
 

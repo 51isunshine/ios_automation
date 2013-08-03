@@ -1,6 +1,6 @@
 /*
  * @created by dylan
- *      对于一些经常变换的元素，对id与name进行交换
+ *      Maybe sometime there have some element which name or id frequently  change ,so please save to this.
  */
 _soureObjectOfIdAndName = {};
 _soureObjectOfIdAndName.MenuPopupButton= {

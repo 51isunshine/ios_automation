@@ -1,6 +1,6 @@
 /**
  * @author dylan
- *  测试入口函数
+ *		main function
  * @param title
  * @param f
  * @param options
@@ -114,20 +114,20 @@ rc_get_at_index_buttons = function rc_get_at_index_buttons(page,element,index,bu
     try {
         if(arguments.length==3)
         {
-            logError("Parse error:少传了一个参数");
+            logError("Parse error: need a parameter");
         }
         else {
             function buttons(button_location) {
                 return button_location;
             }
         }
-        print("您传的下标为：index = "+index);
+        print("index = "+index);
         app=UIATarget.localTarget().frontMostApp();
         var command=element+"="+ "eval("+page + "." + element + ")";
         command=command+"["+index+"]"+buttons(arguments[3]);
 
     } catch (e) {
-        logError("大方点，少了一个参数喽");
+        logError("Parse error: need a parameter");
         throw e;
     }
     return eval(command);
