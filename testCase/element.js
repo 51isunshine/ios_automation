@@ -3,6 +3,10 @@
  *      例如： MessagesAllPage,它是Object
  * @type {{}}
  */
+ /**
+  * This file include element of test-app.
+  * you can invoke rc_get to use it 
+  */
 MessagesAllPage={};
 MessagesAllPage.title   = "app.mainWindow().navigationBar().staticTexts()[0]";
 MessagesAllPage.MessageAll   = "app.mainWindow().images()[1].segmentedControls()[0].buttons()[0]";
