@@ -1,15 +1,15 @@
 Basic introduction:
     JS Dir: This is a test library which include some test method,assert method,common function and so on.
 	Most of time,please use it. when your write test script ,please import 'import.js' to your file which will be save your script.
-	appTest.js: This is the file that is include main function .
+	appTest.js: This is the file that include main test function .
 
 	After your write test script and you want to do CI,So please focus on 'Shell' and 'ReportToolSet' Directory
 	Shell Dir: There are some shell files ,you can use it after you configration the jenkins.
-	ReportToolSet: This is the Java library which can report xml report and generate picture also can send email automated.
+	ReportToolSet: This is the Java library which can create xml report and generate picture also can send email automated.
 
 	reset_simulator: There are some apple-script,if you use simulator that is good.
 
-	testCase: There is the example.
+	testCase: There is the example folder.
 
-	node,data: I want to use node to extends the Test bibrary,But Because of some company reason and now i focus on android automation so that i am sorry i have stop to 
+	node,data: I want to use node.js to extends the Test bibrary,But Because of some company reason and now i focus on android automation so that i am sorry i have no free time to 
 	building it,if you have free time and interested in it ,please extend the functin under the node.js.
