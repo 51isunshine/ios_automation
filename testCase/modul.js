@@ -1,6 +1,12 @@
 /**
  *根据应用的模块，编写相应的脚本function:  Testcase
  */
+ /**
+  * import 'element' and 'imports.js' file.
+  * 
+  * This is save test-script.
+  * 
+  */
 #import "element.js"
 #import  "imports.js"
 function exampleTwo(target,app){
